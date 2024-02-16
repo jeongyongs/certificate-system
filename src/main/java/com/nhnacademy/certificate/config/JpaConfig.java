@@ -3,6 +3,7 @@ package com.nhnacademy.certificate.config;
 import com.nhnacademy.certificate.repository.RepositoryBase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -13,25 +14,28 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackageClasses = RepositoryBase.class)
 public class JpaConfig {
+    private static final String ENTITY_PACKAGE_PATH = "com.nhnacademy.certificate.entity";
+
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment environment) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
-        emf.setPackagesToScan("com.nhnacademy.certificate.entity");
-        emf.setJpaVendorAdapter(jpaVendorAdapters());
+        emf.setPackagesToScan(ENTITY_PACKAGE_PATH);
+        emf.setJpaVendorAdapter(jpaVendorAdapters(Database.valueOf(Objects.requireNonNull(environment.getProperty("db.vendor")))));
         emf.setJpaProperties(jpaProperties());
 
         return emf;
     }
 
-    private JpaVendorAdapter jpaVendorAdapters() {
+    private JpaVendorAdapter jpaVendorAdapters(Database database) {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setDatabase(Database.H2);
+        hibernateJpaVendorAdapter.setDatabase(database);
 
         return hibernateJpaVendorAdapter;
     }
