@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>증명서 발급 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<div class="container">
+    <h1 class="my-3 display-6">증명서 발급 목록</h1>
+    <select class="form-select form-select-sm mb-1" style="width: 120px">
+        <option value="1" selected>5개씩 보기</option>
+        <option value="2">10개씩 보기</option>
+        <option value="3">30개씩 보기</option>
+    </select>
+    <table class="table table-hover align-middle">
+        <thead class="text-center table-secondary">
+        <tr>
+            <th scope="col">증명서확인번호</th>
+            <th scope="col">증명서유형</th>
+            <th scope="col">증명서발급일자</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <tr>
+            <td>12345678-91011121</td>
+            <td>주민등록등본</td>
+            <td>2021-10-25</td>
+        </tr>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination pagination-sm">
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+
+</html>

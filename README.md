@@ -14,4 +14,10 @@
     3. JPA 설정
         1. EntityManagerFactory 등록
         2. TransactionManager 등록
-3. tm
+3. view
+    1. 주민 목록 페이지
+    2. 주민등록등본 페이지
+    3. 가족관계증명서 페이지
+    4. 출생신고서 페이지
+    5. 사망신고서 페이지
+    6. 증명서 발급 목록 페이지
