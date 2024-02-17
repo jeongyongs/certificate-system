@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS birth_death_report_resident
     email_address                    VARCHAR(50),
     phone_number                     VARCHAR(20) NOT NULL,
     PRIMARY KEY (resident_serial_number, birth_death_type_code, report_resident_serial_number),
-    FOREIGN KEY (resident_serial_number) REFERENCES resident(resident_serial_number)
+    FOREIGN KEY (resident_serial_number) REFERENCES resident(resident_serial_number),
+    FOREIGN KEY (report_resident_serial_number) REFERENCES resident(resident_serial_number)
 );
 
 CREATE TABLE IF NOT EXISTS family_relationship
