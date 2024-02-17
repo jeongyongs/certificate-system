@@ -30,6 +30,16 @@ public class BirthDeathReportResident {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @MapsId("residentSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "resident_serial_number")
+    private Resident resident;
+
+    @MapsId("reportResidentSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "report_resident_serial_number")
+    private Resident reportResident;
+
     @Data
     @Embeddable
     @NoArgsConstructor

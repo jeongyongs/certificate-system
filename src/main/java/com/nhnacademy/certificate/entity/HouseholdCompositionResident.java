@@ -24,6 +24,16 @@ public class HouseholdCompositionResident {
     @Column(name = "household_composition_change_reason_code")
     private String householdCompositionChangeReasonCode;
 
+    @MapsId("householdSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "household_serial_number")
+    private Household household;
+
+    @MapsId("residentSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "resident_serial_number")
+    private Resident resident;
+
     @Data
     @Embeddable
     @NoArgsConstructor

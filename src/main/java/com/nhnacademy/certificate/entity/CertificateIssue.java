@@ -2,10 +2,7 @@ package com.nhnacademy.certificate.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
@@ -16,8 +13,9 @@ public class CertificateIssue {
     @Column(name = "certificate_confirmation_number")
     private Long certificateConfirmationNumber;
 
-    @Column(name = "resident_serial_number")
-    private Integer residentSerialNumber;
+    @ManyToOne
+    @JoinColumn(name = "resident_serial_number")
+    private Resident residentSerialNumber;
 
     @Column(name = "certificate_type_code")
     private String certificateTypeCode;

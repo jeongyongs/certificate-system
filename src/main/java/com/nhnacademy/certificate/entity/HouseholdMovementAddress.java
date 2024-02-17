@@ -23,6 +23,11 @@ public class HouseholdMovementAddress {
     @Convert(converter = YnConverter.class)
     private Boolean lastAddress;
 
+    @MapsId("householdSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "household_serial_number")
+    private Household household;
+
     @Data
     @Embeddable
     @NoArgsConstructor

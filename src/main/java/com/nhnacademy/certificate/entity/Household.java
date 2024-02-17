@@ -3,10 +3,7 @@ package com.nhnacademy.certificate.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
@@ -18,8 +15,9 @@ public class Household {
     @Column(name = "household_serial_number")
     private Integer householdSerialNumber;
 
-    @Column(name = "household_resident_serial_number")
-    private Integer householdResidentSerialNumber;
+    @ManyToOne
+    @JoinColumn(name = "household_resident_serial_number")
+    private Resident householdResidentSerialNumber;
 
     @Column(name = "household_composition_date")
     private LocalDate householdCompositionDate;
