@@ -1,7 +1,9 @@
 package com.nhnacademy.certificate.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.nhnacademy.certificate.converter.CodeType;
+import com.nhnacademy.certificate.util.EnumUtils;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +17,7 @@ public class FamilyRelationship {
     private Pk pk;
 
     @Column(name = "family_relationship_code")
-    private String familyRelationshipCode;
+    private Relationship familyRelationship;
 
     @MapsId("baseResidentSerialNumber")
     @ManyToOne
@@ -36,5 +38,26 @@ public class FamilyRelationship {
 
         @Column(name = "family_resident_serial_number")
         private Integer familyResidentSerialNumber;
+    }
+
+    @Getter
+    @ToString
+    @RequiredArgsConstructor
+    public enum Relationship implements CodeType {
+        FATHER("부"),
+        MOTHER("모"),
+        SPOUSE("배우자"),
+        CHILD("자녀");
+
+        private final String code;
+
+        @JsonCreator
+        public static Relationship from(String sub) {
+            try {
+                return Relationship.valueOf(sub.toUpperCase());
+            } catch (IllegalArgumentException ignore) {
+                return EnumUtils.convertToEnum(Relationship.class, sub);
+            }
+        }
     }
 }
