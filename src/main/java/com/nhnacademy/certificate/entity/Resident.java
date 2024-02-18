@@ -92,6 +92,7 @@ public class Resident {
         FARM("농장"),
         HOSPITAL_TRANSFER("병원이송중사망"),
         OTHER("기타");
+
         private final String code;
 
         @JsonCreator

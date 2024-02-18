@@ -24,6 +24,6 @@ public class ResidentRestController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateResident(@PathVariable Integer serialNumber, @Valid @RequestBody ResidentRequest request) {
         request.setResidentSerialNumber(serialNumber);
-        residentService.saveResident(request);
+        residentService.updateResident(request);
     }
 }

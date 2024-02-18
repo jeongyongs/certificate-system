@@ -12,8 +12,14 @@ Content-Type: application/json
 }
 
 ### 주민 수정 API
-PUT localhost:8080/residents/1
+PUT localhost:8080/residents/10
 Content-Type: application/json
 
 {
+  "name": "테스트2",
+  "residentRegistrationNumber": "000101-*******",
+  "genderCode": "남",
+  "birthDate": "2000-01-01T00:00:00",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "서울특별시"
 }

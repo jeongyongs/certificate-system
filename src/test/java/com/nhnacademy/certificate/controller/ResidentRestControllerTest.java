@@ -92,6 +92,6 @@ class ResidentRestControllerTest {
                         .content(content))
                 .andExpect(status().isNoContent());
         Mockito.verify(residentService, Mockito.times(1))
-                .saveResident(Mockito.any());
+                .updateResident(Mockito.any());
     }
 }
