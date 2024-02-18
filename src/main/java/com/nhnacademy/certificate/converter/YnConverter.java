@@ -7,7 +7,10 @@ import javax.persistence.Converter;
 public class YnConverter implements AttributeConverter<Boolean, String> {
     @Override
     public String convertToDatabaseColumn(Boolean attribute) {
-        return Boolean.TRUE.equals(attribute) ? "Y" : "N";
+        if (Boolean.TRUE.equals(attribute)) {
+            return "Y";
+        }
+        return "N";
     }
 
     @Override

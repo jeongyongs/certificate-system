@@ -11,6 +11,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -18,6 +19,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = RepositoryBase.class)
 public class JpaConfig {
     private static final String ENTITY_PACKAGE_PATH = "com.nhnacademy.certificate.entity";
@@ -49,9 +51,9 @@ public class JpaConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
 
-        return transactionManager;
+        return jpaTransactionManager;
     }
 }
