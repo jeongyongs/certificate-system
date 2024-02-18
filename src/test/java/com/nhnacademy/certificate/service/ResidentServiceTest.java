@@ -1,6 +1,6 @@
 package com.nhnacademy.certificate.service;
 
-import com.nhnacademy.certificate.dto.RegisterResidentRequest;
+import com.nhnacademy.certificate.dto.ResidentRequest;
 import com.nhnacademy.certificate.repository.ResidentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class ResidentServiceTest {
 
     @Test
     void saveResident() {
-        residentService.saveResident(new RegisterResidentRequest());
+        residentService.saveResident(new ResidentRequest());
         verify(residentRepository, times(1)).save(any());
     }
 }

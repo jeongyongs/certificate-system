@@ -1,6 +1,6 @@
 package com.nhnacademy.certificate.controller;
 
-import com.nhnacademy.certificate.dto.RegisterResidentRequest;
+import com.nhnacademy.certificate.dto.ResidentRequest;
 import com.nhnacademy.certificate.service.ResidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,14 @@ public class ResidentRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerResident(@Valid @RequestBody RegisterResidentRequest request) {
+    public void registerResident(@Valid @RequestBody ResidentRequest request) {
+        residentService.saveResident(request);
+    }
+
+    @PutMapping("/{serialNumber}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateResident(@PathVariable Integer serialNumber, @Valid @RequestBody ResidentRequest request) {
+        request.setResidentSerialNumber(serialNumber);
         residentService.saveResident(request);
     }
 }

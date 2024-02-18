@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nhnacademy.certificate.entity.Resident;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
@@ -11,9 +12,12 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor
-public class RegisterResidentRequest {
+public class ResidentRequest {
+    private Integer ResidentSerialNumber;
+
     @NotEmpty(message = "이름을 입력하세요.")
     private String name;
 

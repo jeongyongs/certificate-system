@@ -1,6 +1,6 @@
 package com.nhnacademy.certificate.service;
 
-import com.nhnacademy.certificate.dto.RegisterResidentRequest;
+import com.nhnacademy.certificate.dto.ResidentRequest;
 import com.nhnacademy.certificate.entity.Resident;
 import com.nhnacademy.certificate.repository.ResidentRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ public class ResidentService {
     private final ResidentRepository residentRepository;
 
     @Transactional
-    public void saveResident(RegisterResidentRequest request) {
+    public void saveResident(ResidentRequest request) {
         residentRepository.save(
                 Resident.builder()
                         .name(request.getName())
